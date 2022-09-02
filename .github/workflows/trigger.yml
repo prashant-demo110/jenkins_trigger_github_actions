@@ -44,9 +44,9 @@ on:
 #         wait: "true"
 #         timeout: "1000"
 env:
-    JENKINS_HOME: /home/runner/work/jenkins_trigger_github_actions/jenkins_trigger_github_actions/jenkins_home
+#    JENKINS_HOME: /home/runner/work/jenkins_trigger_github_actions/jenkins_trigger_github_actions/jenkins_home
     JENKINS_URL: http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080
-    COMPOSE_FILE: /home/runner/work/_actions/snow-actions/setup-jenkins/v1.1.0/compose.yaml:/home/runner/work/_actions/snow-actions/setup-jenkins/v1.1.0/compose.mount.yaml
+#    COMPOSE_FILE: /home/runner/work/_actions/snow-actions/setup-jenkins/v1.1.0/compose.yaml:/home/runner/work/_actions/snow-actions/setup-jenkins/v1.1.0/compose.mount.yaml
     JENKINS_VERSION: 2.346.3
 jobs:
   first:
