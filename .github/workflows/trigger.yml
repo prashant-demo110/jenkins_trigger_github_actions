@@ -14,4 +14,4 @@ jobs:
         url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/"
         user: "Pulkit Bindal"
         token: ${{ secrets.JENKINS_TOKEN }}
-        job: "jenkins-on-ec2-pipeline"
+        job: "jenkins-job-2-sep"
