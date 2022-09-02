@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: triggerjenkinsjob
-        uses: mickeygoussetorg/trigger-jenkins-job@v1
+        uses: TadeuBraga/trigger-jenkins-job@v2
         with:
           jenkins-server:  "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/" # URL of the jenkins server. ex: http://myjenkins.acme.com:8080
           jenkins-job: "jenkins-job-2-sep" # The name of the jenkins job to run
