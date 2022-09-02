@@ -56,6 +56,14 @@ jobs:
     needs: first
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
+    - uses: snow-actions/setup-jenkins@v1.1.0
+      with:
+        jenkins_home: jenkins_home
+    - run: wget $JENKINS_URL/jnlpJars/jenkins-cli.jar
+    - run: java -jar jenkins-cli.jar -webSocket help
+    - run: java -jar jenkins-cli.jar -webSocket build job-1 -f -v -p param_1=p1
+    
     - name: Build single job
       uses: Mondtic/build-jenkins-job@master
       with:
