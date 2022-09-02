@@ -51,11 +51,7 @@ jobs:
     - name: Build single job
       uses: Mondtic/build-jenkins-job@master
       with:
-        jenkins-url: ${{ secrets.JENKINS_URL }}
+        jenkins-url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
-        jenkins-user: ${{ secrets.JENKINS_USER }}
-        jenkins-job: ${{ secrets.JENKINS_JOB }}
-        jenkins-job-params: "{'stringparam': 'stringvalue', 'booleanparam': false}"
-        jenkins-wait-job: "no-wait"
-        jenkins-ssl-verify: "true"
-        
+        jenkins-user: pulkit-apisero
+        jenkins-job: "jenkins-job-2-sep"
