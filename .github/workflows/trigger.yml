@@ -68,10 +68,19 @@ jobs:
 #     - run: wget $JENKINS_URL/jnlpJars/jenkins-cli.jar
 #     - run: java -jar jenkins-cli.jar -webSocket help
 #     - run: java -jar jenkins-cli.jar -webSocket build jenkins-job-2-sep -f -v -p param_1=p1
-    - name: Build single job
-      uses: Mondtic/build-jenkins-job@master
+#    - name: Build single job
+#     uses: Mondtic/build-jenkins-job@master
+#     with:
+#        jenkins-url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
+#        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+#        jenkins-user: pulkit-apisero
+#       jenkins-job: "jenkins-job-2-sep"
+
+    - name: "Trigger jenkins job"
+      uses: GoldenspearLLC/build-jenkins-job@master
       with:
         jenkins-url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
-        jenkins-user: pulkit-apisero
-        jenkins-job: "jenkins-job-2-sep"
+        user: "pulkit_apisero"
+    - name: Get job status
+      run: echo "Job status is ${{ steps.job-build.outputs.job_status }}"
