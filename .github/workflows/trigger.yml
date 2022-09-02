@@ -12,6 +12,6 @@ jobs:
       uses: appleboy/jenkins-action@master
       with:
         url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/"
-        user: "Pulkit Bindal"
+        user: "pulkit_apisero"
         token: ${{ secrets.JENKINS_TOKEN }}
         job: "jenkins-job-2-sep"
