@@ -29,18 +29,33 @@ on:
 #           poll-time: 20 # how often (seconds) to poll the jenkins server for results
 #           timeout-value: 600 # How long (seconds) to poll before timing out the action
 #           verbose: true # true/false - turns on extra logging
+# jobs:
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Trigger jenkins job
+#       uses: jabbukka/jenkins-trigger@main
+#       with:
+#         url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
+#         job_name: "jenkins-job-2-sep"
+#         user_name: pulkit_apisero
+#         api_token: ${{ secrets.JENKINS_TOKEN}}
+#         wait: "true"
+#         timeout: "1000"
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger jenkins job
-      uses: jabbukka/jenkins-trigger@main
+    - name: Build single job
+      uses: Mondtic/build-jenkins-job@master
       with:
-        url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
-        job_name: "jenkins-job-2-sep"
-        user_name: pulkit_apisero
-        api_token: ${{ secrets.JENKINS_TOKEN}}
-        wait: "true"
-        timeout: "1000"
+        jenkins-url: ${{ secrets.JENKINS_URL }}
+        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+        jenkins-user: ${{ secrets.JENKINS_USER }}
+        jenkins-job: ${{ secrets.JENKINS_JOB }}
+        jenkins-job-params: "{'stringparam': 'stringvalue', 'booleanparam': false}"
+        jenkins-wait-job: "no-wait"
+        jenkins-ssl-verify: "true"
         
