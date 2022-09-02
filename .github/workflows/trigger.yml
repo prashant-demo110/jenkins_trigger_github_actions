@@ -44,8 +44,16 @@ on:
 #         wait: "true"
 #         timeout: "1000"
 jobs:
-  build:
+  first:
     name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout app code
+      uses: actions/checkout@v2
+    - name: Output printing
+      run: echo "Hello"
+  second:
+    needs: first
     runs-on: ubuntu-latest
     steps:
     - name: Build single job
