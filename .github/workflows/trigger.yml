@@ -82,5 +82,6 @@ jobs:
         jenkins-url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
         user: "pulkit_apisero"
+        job-path: "job/jenkins-job-2-sep"
     - name: Get job status
       run: echo "Job status is ${{ steps.job-build.outputs.job_status }}"
