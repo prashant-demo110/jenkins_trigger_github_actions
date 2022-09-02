@@ -2,86 +2,15 @@ name: trigger jenkins job
 on:
   push: 
     branches: [jenkins-on-ec2]
-# jobs:
-  
-#   build:
-#     name: Build
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: trigger single Job
-#       uses: appleboy/jenkins-action@master
-#       with:
-#         url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/"
-#         user: "pulkit_apisero"
-#         token: ${{ secrets.JENKINS_TOKEN }}
-#         job: "jenkins-job-2-sep"
-# jobs:
-#   trigger-a-jenkins-job:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - id: triggerjenkinsjob
-#         uses: mickeygoussetorg/trigger-jenkins-job@v1
-#         with:
-#           jenkins-server:  "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080" # URL of the jenkins server. ex: http://myjenkins.acme.com:8080
-#           jenkins-job: "jenkins-job-2-sep" # The name of the jenkins job to run
-#           jenkins-username: pulkit_apisero # user name for accessing jenkins
-#           jenkins-pat: ${{ secrets.JENKINS_TOKEN}} # personal Access token for accessing Jenkins
-#           poll-time: 20 # how often (seconds) to poll the jenkins server for results
-#           timeout-value: 600 # How long (seconds) to poll before timing out the action
-#           verbose: true # true/false - turns on extra logging
-# jobs:
-#   build:
-#     name: Build
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Trigger jenkins job
-#       uses: jabbukka/jenkins-trigger@main
-#       with:
-#         url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
-#         job_name: "jenkins-job-2-sep"
-#         user_name: pulkit_apisero
-#         api_token: ${{ secrets.JENKINS_TOKEN}}
-#         wait: "true"
-#         timeout: "1000"
-env:
-#    JENKINS_HOME: /home/runner/work/jenkins_trigger_github_actions/jenkins_trigger_github_actions/jenkins_home
-    JENKINS_URL: http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080
-#    COMPOSE_FILE: /home/runner/work/_actions/snow-actions/setup-jenkins/v1.1.0/compose.yaml:/home/runner/work/_actions/snow-actions/setup-jenkins/v1.1.0/compose.mount.yaml
-    JENKINS_VERSION: 2.346.3
 jobs:
   first:
-    name: Build
+    name: first
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout app code
-      uses: actions/checkout@v2
-    - name: Output printing
-      run: echo "Hello"
-  second:
-    needs: first
-    runs-on: ubuntu-latest
-    steps:
-#     - uses: actions/checkout@v3
-#     - uses: snow-actions/setup-jenkins@v1.1.0
-#       with:
-#         jenkins_home: jenkins_home
-#     - run: wget $JENKINS_URL/jnlpJars/jenkins-cli.jar
-#     - run: java -jar jenkins-cli.jar -webSocket help
-#     - run: java -jar jenkins-cli.jar -webSocket build jenkins-job-2-sep -f -v -p param_1=p1
-#    - name: Build single job
-#     uses: Mondtic/build-jenkins-job@master
-#     with:
-#        jenkins-url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
-#        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
-#        jenkins-user: pulkit-apisero
-#       jenkins-job: "jenkins-job-2-sep"
-
-    - name: "Trigger jenkins job"
-      uses: GoldenspearLLC/build-jenkins-job@master
+    - name: trigger single Job
+      uses: appleboy/jenkins-action@master
       with:
-        jenkins-url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080"
-        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+        url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/"
         user: "pulkit_apisero"
-        job-path: "job/jenkins-job-2-sep"
-    - name: Get job status
-      run: echo "Job status is ${{ steps.job-build.outputs.job_status }}"
+        token: ${{ secrets.JENKINS_TOKEN }}
+        job: "jenkins-job-2-sep"
