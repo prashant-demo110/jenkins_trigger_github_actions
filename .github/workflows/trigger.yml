@@ -1,0 +1,17 @@
+name: trigger jenkins job
+on:
+  push: 
+    branches: [jenkins-on-ec2]
+jobs:
+  
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: trigger single Job
+      uses: appleboy/jenkins-action@master
+      with:
+        url: "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/"
+        user: "Pulkit Bindal"
+        token: ${{ secrets.TOKEN }}
+        job: "jenkins-on-ec2-pipeline"
