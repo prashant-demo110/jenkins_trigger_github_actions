@@ -21,7 +21,7 @@ jobs:
       run: |
         echo ${{ steps.myRequest.outputs.response }}
         echo ${{ steps.myRequest.outputs.headers }}
-        echo ${{ fromJson(steps.myRequest.outputs.response).field_you_want_to_access }}
+        echo ${{ fromJson(steps.myRequest.outputs.response).crumb }}
 #     - name: Run Latest_Crumb1
 #       run: |
 #           jenkins_data= $jenkins_data
