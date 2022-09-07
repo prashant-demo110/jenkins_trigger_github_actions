@@ -9,22 +9,10 @@ jobs:
     steps:
     - name: Checkout App Code 
       uses: actions/checkout@master
-      
-#     - name: Make Request
-#       id: myRequest
-#       uses: fjogeleit/http-request-action@v1
-#       with:
-#         url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:1116e4d9dd7a0d4dab73d45d96e9b5fb97'
-        
-#     - name: Show Response
-#       run: |
-#         echo ${{ steps.myRequest.outputs.response }}
-#         echo ${{ steps.myRequest.outputs.headers }}
-#         echo ${{ fromJson(steps.myRequest.outputs.response).crumb }}
         
     - name: Create release version for bump_version_major
       env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
           crumb=$(curl -u "pulkit_apisero:admin" -s 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
-          echo $crumb
+          echo $crumb.Jenkins-Crumb
