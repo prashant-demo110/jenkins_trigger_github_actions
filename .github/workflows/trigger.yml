@@ -2,30 +2,34 @@ name: CI
 on:
   push:
     branches: [ "jenkins-on-ec2" ]
-env:
-  jenkins_data: 
 jobs:
   build:
+    name: building
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Deploy Stage
-      uses: fjogeleit/http-request-action@v1
-      with:
-        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json'
-        method: 'GET'
-        username: 'pulkit_apisero'
-        password: 'admin'
+    - name: Checkout App Code 
+      uses: actions/checkout@master
+      
+#     - name: Deploy Stage
+#       uses: fjogeleit/http-request-action@v1
+#       with:
+#         url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json'
+#         method: 'GET'
+#         username: 'pulkit_apisero'
+#         password: 'admin'
+        
     - name: Make Request
       id: myRequest
       uses: fjogeleit/http-request-action@v1
       with:
-        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json'
+        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin'
+        
     - name: Show Response
       run: |
         echo ${{ steps.myRequest.outputs.response }}
         echo ${{ steps.myRequest.outputs.headers }}
         echo ${{ fromJson(steps.myRequest.outputs.response).crumb }}
+        
 #     - name: Run Latest_Crumb1
 #       run: |
 #           jenkins_data= $jenkins_data
