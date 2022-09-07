@@ -12,10 +12,10 @@ jobs:
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
-        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json '
+        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json'
         method: 'GET'
         username: 'pulkit_apisero'
-        password: 'admin'
+        password: '1116e4d9dd7a0d4dab73d45d96e9b5fb97'
     - name: Show Response
       id: myRequest
       run: |
