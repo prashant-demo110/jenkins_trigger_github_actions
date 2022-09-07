@@ -3,14 +3,14 @@ on:
   push: 
     branches: [jenkins-on-ec2]
 jobs:
-  trigger-a-jenkins-job:
+  Latest_Crumb_ID:
+    name: Get Latest_Crumb_ID
     runs-on: ubuntu-latest
     steps:
-      - name: Taking Latest_Crumb
-      - uses: actions/checkout@v3
-        id: latestcrumb
+      - uses: actions/checkout@master
+      - name: Example of Latest_Crumb_ID
       - run: |
-          jenkins_data= $(curl -X GET http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin)
-          Latest_Crumb_ID=$(echo "$jenkins_data" | jq -r '.[0].crumb')
+          jenkins_data= $(curl -X GET http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin --data token=1116e4d9dd7a0d4dab73d45d96e9b5fb97)
+          Latest_Crumb_ID=$(echo "$jenkins_data" | jq -r '.crumb')
           echo "Latest_Crumb_ID: Latest Crumb ID is : $Latest_Crumb_ID"
           echo ::set-output name=Latest_Crumb_ID::"$Latest_Crumb_ID"
