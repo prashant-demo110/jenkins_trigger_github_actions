@@ -7,8 +7,8 @@ jobs:
     name: Get Latest_Crumb_ID
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
       - name: Example of Latest_Crumb_ID
+      - uses: actions/checkout@master
       - run: |
           jenkins_data= $(curl -X GET http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin --data token=1116e4d9dd7a0d4dab73d45d96e9b5fb97)
           Latest_Crumb_ID=$(echo "$jenkins_data" | jq -r '.crumb')
