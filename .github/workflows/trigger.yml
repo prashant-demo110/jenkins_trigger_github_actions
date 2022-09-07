@@ -6,9 +6,10 @@ jobs:
   trigger-a-jenkins-job:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v3
-     - run: |
-          jenkins_data= $(curl -X GET http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json -H "Authorization: pulkit_apisero:1116e4d9dd7a0d4dab73d45d96e9b5fb97")
+      - name: Taking Latest_Crumb
+        id: latestcrumb
+      - run: |
+          jenkins_data= $(curl -X GET http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin)
           Latest_Crumb_ID=$(echo "$jenkins_data" | jq -r '.[0].crumb')
           echo "Latest_Crumb_ID: Latest Crumb ID is : $Latest_Crumb_ID"
           echo ::set-output name=Latest_Crumb_ID::"$Latest_Crumb_ID"
