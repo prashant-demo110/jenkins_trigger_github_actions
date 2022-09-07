@@ -15,9 +15,5 @@ jobs:
              http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json \
              --user pulkit_apisero:admin \
              -H 'Jenkins-Crumb: 04e2c6d7044523b5cdd40ad080b37ecd49448656fecba8370b729ed2d82b8bbc'
-          curl \
-            -X POST \
-             http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/job/job-07092022/buildWithParameters \
-             --data token=1116e4d9dd7a0d4dab73d45d96e9b5fb97 \
-             --user pulkit_apisero:admin \
-             -H 'Jenkins-Crumb: 04e2c6d7044523b5cdd40ad080b37ecd49448656fecba8370b729ed2d82b8bbc'
+          curl -X POST http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/job//build --user pulkit_apisero:admin -H 'Jenkins-Crumb: 04e2c6d7044523b5cdd40ad080b37ecd49448656fecba8370b729ed2d82b8bbc'
+
