@@ -22,7 +22,7 @@ jobs:
       id: myRequest
       uses: fjogeleit/http-request-action@v1
       with:
-        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin'
+        url: 'http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:1116e4d9dd7a0d4dab73d45d96e9b5fb97'
         
     - name: Show Response
       run: |
