@@ -9,7 +9,7 @@ jobs:
       - id: triggerjenkinsjob
         uses: mickeygoussetorg/trigger-jenkins-job@v1
         with:
-          jenkins-server:  "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/" # URL of the jenkins server. ex: http://myjenkins.acme.com:8080
+          jenkins-server:  "http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080" # URL of the jenkins server. ex: http://myjenkins.acme.com:8080
           jenkins-job: "pipeline-07092022" # The name of the jenkins job to run
           jenkins-username: "pulkit_apisero" # user name for accessing jenkins
           jenkins-pat: ${{ secrets.JENKINS_TOKEN }} # personal Access token for accessing Jenkins
