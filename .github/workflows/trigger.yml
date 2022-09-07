@@ -17,5 +17,5 @@ jobs:
             -X POST \
              http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/job/job-07092022/buildWithParameters \
              --data token=1116e4d9dd7a0d4dab73d45d96e9b5fb97 \
-             --user pulkit_apisero:admin 
+             --user pulkit_apisero:admin \
              -H 'Jenkins-Crumb: 1116e4d9dd7a0d4dab73d45d96e9b5fb97'
