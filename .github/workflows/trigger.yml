@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Taking Latest_Crumb
+      - uses: actions/checkout@v3
         id: latestcrumb
       - run: |
           jenkins_data= $(curl -X GET http://ec2-3-16-151-254.us-east-2.compute.amazonaws.com:8080/crumbIssuer/api/json --user pulkit_apisero:admin)
