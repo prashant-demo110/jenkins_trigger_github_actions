@@ -1,4 +1,3 @@
-
 name: Test JMeter Action
 
 on:
@@ -10,7 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+      - name: Run JMeter Action on a test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: tests/sample_test.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+
       - name: JMeter Test
         uses: QAInsights/PerfAction@v3.1
         with:
@@ -20,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jmeter-results
-          path: jenkins_trigger_github_actions/result.jtl
+          path: result.jtl
