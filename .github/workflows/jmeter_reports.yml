@@ -1,8 +1,14 @@
 name: Test JMeter Action
 
 on:
-  push:
-    branches: [ "jenkins-on-ec2" ]
+  workflow_call:
+    inputs:
+      repo_name:
+        required: true
+        type: string
+      environment: 
+        required: true
+        type: string
   
 jobs:
   action_build:
@@ -19,24 +25,24 @@ jobs:
       - name: Run JMeter Action on other tests
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-          testFilePath: tests/sample_test_2.jmx
-          outputReportsFolder: reports/
+          testFilePath: jenkins_trigger_github_actions/other-tests/
+          outputReportsFolder: jenkins_trigger_github_actions/other_reports/
           args: "--loglevel INFO"
 
-      - uses: actions/upload-artifact@v1
-        with:
-          name: jmeter-test-results
-          path: reports/
+#       - uses: actions/upload-artifact@v1
+#         with:
+#           name: jmeter-test-results
+#           path: reports/
 
-      - uses: actions/upload-artifact@v1
-        with:
-          name: jmeter-test-results-other
-          path: reports/
+#       - uses: actions/upload-artifact@v1
+#         with:
+#           name: jmeter-test-results-other
+#           path: other_reports/
           
       - name: JMeter Test
         uses: QAInsights/PerfAction@v3.1
         with:
-          test-plan-path: ./tests/sample_test.jmx
+          test-plan-path: tests/sample_test.jmx
           args: ""
       - name: Upload Results
         uses: actions/upload-artifact@v2
