@@ -1,7 +1,7 @@
 name: CI
-on:
+#on:
   push:
-#    branches: [ "jenkins-on-ec2" ]
+    branches: [ "jenkins-on-ec2" ]
 jobs:
   Jenkins_Job:
     name: Jenkins_Job
