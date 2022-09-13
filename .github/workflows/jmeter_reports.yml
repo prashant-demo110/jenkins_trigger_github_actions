@@ -14,7 +14,8 @@ jobs:
         with:
           testFilePath: tests/sample_test.jmx
           outputReportsFolder: reports/
-          args: "--loglevel INFO"
+#          args: "--loglevel INFO"
+          args: ""
 
       - name: JMeter Test
         uses: QAInsights/PerfAction@v3.1
